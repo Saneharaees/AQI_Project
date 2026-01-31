@@ -1,48 +1,68 @@
 import streamlit as st
 import hopsworks
 import joblib
+import pandas as pd
+import numpy as np
 import os
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
-# 1. Setup & Connection
 load_dotenv()
-st.set_page_config(page_title="Lahore AQI Predictor", page_icon="🌤️")
+
+st.set_page_config(page_title="Lahore AQI Forecast", page_icon="🌬️")
+
+st.title("🌬️ Lahore Air Quality Forecast Dashboard")
+st.write("Professional ML Pipeline using Hopsworks & Random Forest")
 
 @st.cache_resource
-def get_model():
-    project = hopsworks.login(api_key_value=os.getenv("HOPSWORKS_API_KEY"), project="AQI_Forecasting_Saneha")
+def load_model_from_hopsworks():
+    project = hopsworks.login(api_key_value=os.getenv("HOPSWORKS_API_KEY"))
     mr = project.get_model_registry()
-    # Cloud se model download karna
-    model_obj = mr.get_model("aqi_model", version=1)
+    # Model Registry se model download karna
+    model_obj = mr.get_model("aqi_forecaster", version=1)
     model_dir = model_obj.download()
     model = joblib.load(os.path.join(model_dir, "aqi_model.pkl"))
     return model
 
-# 2. UI Design
-st.title("Lahore AQI Real-time Predictor 🇵🇰")
-st.write("Is app ke zariye aap moosam ki soorat-e-haal daal kar Air Quality Index (AQI) maloom kar sakte hain.")
+try:
+    with st.spinner("Fetching model from Hopsworks..."):
+        model = load_model_from_hopsworks()
+    st.success("✅ Model Loaded Successfully!")
 
-model = get_model()
-
-with st.sidebar:
-    st.header("Input Parameters")
-    temp = st.slider("Temperature (°C)", 0, 50, 25)
-    humidity = st.slider("Humidity (%)", 0, 100, 50)
-    wind_speed = st.slider("Wind Speed (m/s)", 0.0, 10.0, 2.5)
-
-# 3. Prediction Logic
-if st.button("Predict AQI"):
-    prediction = model.predict([[temp, humidity, wind_speed]])
-    aqi_val = round(prediction[0])
+    # User Input for Prediction (or auto-fetch from API)
+    st.subheader("Predict Future AQI")
+    col1, col2, col3 = st.columns(3)
     
-    # Result Display
-    st.subheader(f"Predicted AQI: {aqi_val}")
+    with col1:
+        temp = st.slider("Temperature (°C)", 5, 45, 18)
+    with col2:
+        hum = st.slider("Humidity (%)", 10, 100, 55)
+    with col3:
+        wind = st.slider("Wind Speed (m/s)", 0.0, 10.0, 2.5)
+
+    # Current time features
+    now = datetime.now()
     
-    if aqi_val <= 50:
-        st.success("Good (Achi Sehat)")
-    elif aqi_val <= 100:
-        st.info("Satisfactory (Theek hai)")
-    elif aqi_val <= 200:
-        st.warning("Moderate (Thoda Nuqsan-deh)")
-    else:
-        st.error("Poor/Hazardous (Khatarnak)")
+    # Prepare data for 3 days forecast
+    forecast_data = []
+    for i in range(1, 4):
+        future_date = now + timedelta(days=i)
+        features = [[
+            future_date.hour, 
+            future_date.weekday(), 
+            future_date.month, 
+            temp, 
+            hum, 
+            wind
+        ]]
+        prediction = model.predict(features)[0]
+        forecast_data.append({"Day": future_date.strftime('%A'), "Predicted AQI": int(prediction)})
+
+    df_forecast = pd.DataFrame(forecast_data)
+    
+    # Display Results
+    st.table(df_forecast)
+    st.line_chart(df_forecast.set_index("Day"))
+
+except Exception as e:
+    st.error(f"Error: {e}")
