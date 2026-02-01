@@ -3,10 +3,10 @@ An end-to-end, 100% serverless machine learning pipeline that predicts the Air Q
 
 ---
 
-## 🚀 Project Overview
+##  Project Overview
 This project forecasts Lahore's AQI by combining live weather data with historical trends. It utilizes a modern MLOps architecture where data collection, model training, and predictions are fully automated without needing a dedicated server.
 
-## 🏗️ Technical Architecture
+##  Technical Architecture
 
 
 ### 1. Feature Pipeline (Automated)
@@ -43,7 +43,7 @@ This project forecasts Lahore's AQI by combining live weather data with historic
 
 ## 📸 Screenshots
 
-| Feature Store (Hopsworks) | Live Dashboard (Streamlit) |
+|Feature Store Automation (GitHub Actions) | Live Dashboard (Streamlit) |
 |---|---|
 | ![GitHub Actions Screenshot](github_action_workflow.png) | ![Dashboard Screenshot](dashboard_veiw.png)|
 *(Note: Replace these placeholders with your actual screenshots!)*
