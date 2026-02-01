@@ -42,6 +42,7 @@ This project forecasts Lahore's AQI by combining live weather data with historic
 - **Accessibility:** Fully responsive web dashboard with health advisories.
 
 ## 📸 Screenshots
+![Dashboard Screenshot](dashboard_veiw.png)     ![GitHub Actions Screenshot](github_action_workflow.png)
 | Feature Store (Hopsworks) | Live Dashboard (Streamlit) |
 |---|---|
 | ![Hopsworks](https://via.placeholder.com/400x200?text=Hopsworks+Feature+Groups) | ![Dashboard](https://via.placeholder.com/400x200?text=Streamlit+AQI+Forecast) |
