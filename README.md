@@ -63,4 +63,4 @@ This project forecasts Lahore's AQI by combining live weather data with historic
 4. Run the dashboard: `streamlit run app.py`
 
 ---
-**Developed by Saneha | [Your LinkedIn Profile Link]**
+**Developed by Saneha | [www.linkedin.com/in/saneha-raees-68a699275]**
