@@ -41,12 +41,18 @@ This project forecasts Lahore's AQI by combining live weather data with historic
 - **Automation Frequency:** Hourly data updates via Serverless CRON jobs.
 - **Accessibility:** Fully responsive web dashboard with health advisories.
 
-## 📸 Screenshots
+## 📸 Project Showcase
 
-|Feature Store Automation (GitHub Actions) | Live Dashboard (Streamlit) |
-|---|---|
-| ![GitHub Actions Screenshot](github_action_workflow.png) | ![Dashboard Screenshot](dashboard_veiw.png)|
-*(Note: Replace these placeholders with your actual screenshots!)*
+| 1. Feature Store (Data) | 2. Model Registry (ML Model) |
+| :---: | :---: |
+| ![Hopsworks Data](hopswork_feature_group.png) | ![Model Registry](model_registery.png) |
+| *Automated Feature Ingestion* | *Versioned ML Models* |
+
+| 3. Automation (GitHub Actions) | 4. Live Dashboard (Streamlit) |
+| :---: | :---: |
+| ![Automation Engine](github_action_workflow.png) | ![Live App](dashboard_veiw.png) |
+| *Hourly Pipeline Updates* | *Real-time AQI Forecasts* |
+
 
 ---
 
