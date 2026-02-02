@@ -1,4 +1,4 @@
-# 🌬️ Pearls AQI Predictor: Lahore Air Quality Forecast
+#  Pearls AQI Predictor: Lahore Air Quality Forecast
 An end-to-end, 100% serverless machine learning pipeline that predicts the Air Quality Index (AQI) for the next 3 days using a real-time data stack.
 
 ---
@@ -26,7 +26,7 @@ This project forecasts Lahore's AQI by combining live weather data with historic
 
 ---
 
-## 🛠️ Technology Stack
+##  Technology Stack
 * **Language:** Python
 * **ML Framework:** Scikit-learn (Random Forest)
 * **Feature Store:** Hopsworks
@@ -36,12 +36,12 @@ This project forecasts Lahore's AQI by combining live weather data with historic
 
 ---
 
-## 📈 Key Results
+##  Key Results
 - **Mean Absolute Error (MAE):** ~24.36 (High precision for atmospheric forecasting).
 - **Automation Frequency:** Hourly data updates via Serverless CRON jobs.
 - **Accessibility:** Fully responsive web dashboard with health advisories.
 
-## 📸 Project Showcase
+##  Project Showcase
 
 | 1. Feature Store (Data) | 2. Model Registry (ML Model) |
 | :---: | :---: |
@@ -56,14 +56,14 @@ This project forecasts Lahore's AQI by combining live weather data with historic
 
 ---
 
-## 🛠️ How to Run Locally
+##  How to Run Locally
 1. Clone the repo: `git clone <your-repo-link>`
 2. Install requirements: `pip install -r requirements.txt`
 3. Add your API keys to a `.env` file.
 4. Run the dashboard: `streamlit run app.py`
 
 ---
-## 🚀 Live Demo
+##  Live Demo
 Aap is project ka live dashboard yahan dekh sakte hain:
-**[👉 Click Here to View Live AQI Forecast Dashboard](https://aqiproject-ey64xgexux8lldtewovdxw.streamlit.app/)**
+**[ Click Here to View Live AQI Forecast Dashboard](https://aqiproject-ey64xgexux8lldtewovdxw.streamlit.app/)**
 **Developed by Saneha | [www.linkedin.com/in/saneha-raees-68a699275]**
